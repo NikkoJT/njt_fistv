@@ -1,0 +1,1 @@
+njt_var_supportChannel = 1;

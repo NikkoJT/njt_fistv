@@ -1,0 +1,47 @@
+class CfgSounds
+{
+	sounds[] = {};
+	class radiobleep
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "radiobleep";
+		// filename, volume, pitch, distance
+		sound[] = {"njt_fistv\radiobleep.ogg", 1, 1, 300};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {0, ""};
+	};
+};
+
+class Params
+{
+	
+	class njt_param_fistv_supportCount
+	{
+		title = "FISTV support availability";
+		values[] = {0,5,10,20,500};
+		texts[] = {"None","5","10","20","500"};
+		default = 10;
+	};
+	class njt_param_fistv_supportCooldown
+	{
+		title = "FISTV support cooldown";
+		values[] = {30,60,120,300};
+		texts[] = {"30","60","120","300"};
+		default = 60;
+	};
+
+};
+
+class CfgFunctions
+{
+	class njt
+	{
+		class fistv
+		{
+			file = "njt_fistv";
+			class fistv_init{};
+			class fistv_support{};
+			class fistv_briefing{};
+		};
+	};
+};
