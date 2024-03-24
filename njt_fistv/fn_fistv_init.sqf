@@ -8,8 +8,7 @@ In object init field (AFTER assignGear call):
 [this, west] call njt_fnc_fistv_init;
 
 // REQUIRED MISSION VARIABLES: 
-njt_supportCentre [unit]
- njt_var_supportChannel [custom channel ID]
+ njt_var_supportChannel [custom channel ID] (DEFINED IN fn_fistv_initServer.sqf)
  njt_param_fistv_supportCount [number]
  njt_param_supportCooldown [number]
  
