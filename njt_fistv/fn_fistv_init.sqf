@@ -284,7 +284,7 @@ if isServer then {
 				_vehicle lockTurret [[0],true];
 				_vehicle lockTurret [[0,0],true];
 				
-				private _turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]]; 
+				_turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]]; 
 				_turret attachTo [_vehicle,[0.41,-1.06,0.2]];
 				private _group = _side createVehicleCrew _turret;
 				_group setGroupIDGlobal [format ["AFV-12 FISTV Observer %1", _fistvCount]];
