@@ -42,6 +42,9 @@ class CfgFunctions
 			class fistv_init{};
 			class fistv_support{};
 			class fistv_briefing{};
+			class fistv_initServer{
+				postInit = 1;
+			};
 		};
 	};
 };
