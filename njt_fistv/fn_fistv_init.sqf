@@ -20,8 +20,6 @@ params ["_vehicle","_side"];
 if isServer then {
 	private _fistvCount = missionNamespace getVariable ["njt_var_fistv_count",0];
 	missionNamespace setVariable ["njt_var_fistv_count",_fistvCount + 1,true];
-
-	_vehicle animate ["HideTurret",1]; 
 	
 	private _turret = _vehicle;
 	
@@ -29,6 +27,7 @@ if isServer then {
 	
 		// MARSHALL (Mediterranean)
 		case "b_apc_wheeled_01_cannon_f" : {
+			_vehicle animate ["HideTurret",1]; 
 			_vehicle removeWeaponTurret ["autocannon_40mm_CTWS", [0]]; 
 			_vehicle removeWeaponTurret ["LMG_coax", [0]];
 			_vehicle lockTurret [[0,0],true];
@@ -61,6 +60,7 @@ if isServer then {
 		};
 		// MARSHALL (Pacific)
 		case "b_t_apc_wheeled_01_cannon_f" : {
+			_vehicle animate ["HideTurret",1]; 
 			_vehicle removeWeaponTurret ["autocannon_40mm_CTWS", [0]]; 
 			_vehicle removeWeaponTurret ["LMG_coax", [0]];
 			_vehicle lockTurret [[0,0],true];
@@ -93,6 +93,7 @@ if isServer then {
 		};
 		// MARID (Mediterranean)
 		case "o_apc_wheeled_02_rcws_v2_f" : {
+			_vehicle animate ["HideTurret",1]; 
 			_vehicle removeWeaponTurret ["HMG_127_APC", [0]]; 
 			_vehicle removeWeaponTurret ["GMG_40mm", [0]];
 			_vehicle lockTurret [[0],true];
@@ -124,6 +125,7 @@ if isServer then {
 		};
 		// MARID (Pacific)
 		case "o_t_apc_wheeled_02_rcws_v2_ghex_f" : {
+			_vehicle animate ["HideTurret",1]; 
 			_vehicle removeWeaponTurret ["HMG_127_APC", [0]]; 
 			_vehicle removeWeaponTurret ["GMG_40mm", [0]];
 			_vehicle lockTurret [[0],true];
@@ -242,12 +244,13 @@ if isServer then {
 		};
 		// GORGON (NATO / AAF)
 		case "i_apc_wheeled_03_cannon_f" : {
+			_vehicle animate ["HideTurret",1]; 
+			_vehicle removeWeaponTurret ["autocannon_30mm_CTWS", [0]];
+			_vehicle removeWeaponTurret ["LMG_coax_ext", [0]];
+			_vehicle removeWeaponTurret ["missiles_titan", [0]];
+			_vehicle lockTurret [[0],true];
+			_vehicle lockTurret [[0,0],true];
 			if (_side == west) then {
-				_vehicle removeWeaponTurret ["autocannon_30mm_CTWS", [0]];
-				_vehicle removeWeaponTurret ["LMG_coax_ext", [0]];
-				_vehicle removeWeaponTurret ["missiles_titan", [0]];
-				_vehicle lockTurret [[0],true];
-				_vehicle lockTurret [[0,0],true];
 				
 				_vehicle setObjectTextureGlobal [0, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa"];  
 				_vehicle setObjectTextureGlobal [1, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa"];  
@@ -278,13 +281,8 @@ if isServer then {
 				private _w1 = createVehicle ["Land_PortableWeatherStation_01_sand_F",[0,0,0]]; 
 				_w1 attachTo [_vehicle,[0.43,-3.55,0.8]];
 			} else {
-				_vehicle removeWeaponTurret ["autocannon_30mm_CTWS", [0]];
-				_vehicle removeWeaponTurret ["LMG_coax_ext", [0]];
-				_vehicle removeWeaponTurret ["missiles_titan", [0]];
-				_vehicle lockTurret [[0],true];
-				_vehicle lockTurret [[0,0],true];
 				
-				_turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]]; 
+				private _turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]]; 
 				_turret attachTo [_vehicle,[0.41,-1.06,0.2]];
 				private _group = _side createVehicleCrew _turret;
 				_group setGroupIDGlobal [format ["AFV-12 FISTV Observer %1", _fistvCount]];
@@ -344,6 +342,93 @@ if isServer then {
 				private _w1 = createVehicle ["Land_PortableWeatherStation_01_olive_F",[0,0,0]]; 
 				_w1 attachTo [_vehicle,[0,-1.45,1.3]];
 			};
+		};
+		// HUMMINGBIRD
+		case "b_d_heli_light_01_lxws";
+		case "b_heli_light_01_f" :
+		{
+			_turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]];
+			_turret attachTo [_vehicle,[-0.963379,-0.476074,-0.463726]];
+			private _group = _side createVehicleCrew _turret;
+			_group setGroupIDGlobal [format ["OH-9 Observer %1", _fistvCount]];
+
+			private _t1 = createVehicle ["Land_PortableServer_01_olive_F",[0,0,0]],
+			_t1 attachTo [_vehicle,[-0.955566,-0.401367,-1.05528]];
+			_t1 setVectorDirAndUp [[0.000,1.000,-0.000],[0.000,-0.000,1.000]];
+			private _t2 = createVehicle ["Land_BatteryPack_01_closed_sand_F",[0,0,0]],
+			_t2 attachTo [_vehicle,[-0.958984,0.208008,-1.05409]];
+			_t2 setVectorDirAndUp [[-1.000,-0.002,-0.000],[0.000,0.004,-1.000]];
+			private _t3 = createVehicle ["Land_BatteryPack_01_closed_sand_F",[0,0,0]],
+			_t3 attachTo [_vehicle,[-0.958984,0.491211,-1.05462]];
+			_t3 setVectorDirAndUp [[-1.000,-0.002,-0.000],[0.000,0.004,-1.000]];
+			private _t4 = createVehicle ["Land_MultiScreenComputer_01_closed_sand_F",[0,0,0]],
+			_t4 attachTo [_vehicle,[0.670898,-0.269531,-0.95883]];
+			_t4 setVectorDirAndUp [[-0.828,0.041,0.559],[0.558,-0.037,0.829]];
+			private _t5 = createVehicle ["Land_PortableLight_02_folded_sand_F",[0,0,0]],
+			_t5 attachTo [_vehicle,[0.95752,0.952637,-1.00675]];
+			_t5 setVectorDirAndUp [[0.000,0.008,1.000],[-0.000,-1.000,0.008]];
+			private _t6 = createVehicle ["Land_PortableLight_02_folded_sand_F",[0,0,0]],
+			_t6 attachTo [_vehicle,[0.95752,0.294922,-1.00722]];
+			_t6 setVectorDirAndUp [[0.000,0.008,1.000],[-0.000,-1.000,0.008]];
+		};
+		// PAWNEE
+		case "b_d_heli_light_01_dynamicloadout_lxws";
+		case "b_heli_light_01_dynamicloadout_f" :
+		{
+			_turret = createVehicle ["B_W_Static_Designator_01_F",[0,0,0]];
+			_turret attachTo [_vehicle,[-1.143,0.635,0.038]];
+			private _group = _side createVehicleCrew _turret;
+			_group setGroupIDGlobal [format ["AH-9 Scout Observer %1", _fistvCount]];
+			
+			private _t1 = createVehicle ["Land_PortableServer_01_olive_F",[0,0,0]],
+			_t1 attachTo [_vehicle,[-1.160,0.565,-0.556]];
+			_t1 setVectorDirAndUp [[-0.025,1.000,-0.007],[0.024,0.008,1.000]];
+			private _t2 = createVehicle ["Land_BatteryPack_01_closed_sand_F",[0,0,0]],
+			_t2 attachTo [_vehicle,[0.403,0.536,-0.563]];
+			_t2 setVectorDirAndUp [[0.076,0.997,-0.010],[0.024,0.008,1.000]];
+			private _t3 = createVehicle ["Land_BatteryPack_01_closed_sand_F",[0,0,0]],
+			_t3 attachTo [_vehicle,[0.118,0.556,-0.557]];
+			_t3 setVectorDirAndUp [[0.076,0.997,-0.010],[0.024,0.008,1.000]];
+			private _t4 = createVehicle ["Land_MultiScreenComputer_01_closed_sand_F",[0,0,0]],
+			_t4 attachTo [_vehicle,[-0.393,0.547,-0.476]];
+			_t4 setVectorDirAndUp [[0.349,-0.937,-0.001],[0.024,0.008,1.000]];
+			private _t5 = createVehicle ["Land_PortableLight_02_folded_sand_F",[0,0,0]],
+			_t5 attachTo [_vehicle,[1.197,0.541,-0.632]];
+			_t5 setVectorDirAndUp [[0.005,-0.000,-1.000],[0.000,-1.000,0.000]];
+			private _t6 = createVehicle ["Land_PortableLight_02_folded_sand_F",[0,0,0]],
+			_t6 attachTo [_vehicle,[0.761,0.535,-0.629]];
+			_t6 setVectorDirAndUp [[-0.018,-0.000,-1.000],[0.000,-1.000,0.000]];
+		};
+		// AH-11F
+		case "b_heli_light_03_unarmed_rf";
+		case "b_heli_light_03_dynamicloadout_rf";
+		case "i_e_heli_light_03_dynamicloadout_rf";
+		case "i_e_heli_light_03_unarmed_rf" :
+		{
+			if (_side == east) then {
+				[_vehicle,["Black",1]] call BIS_fnc_initVehicle;
+			};
+		};
+		// WY-55
+		case "b_heli_light_03_unarmed_f";
+		case "b_heli_light_03_dynamicloadout_f";
+		case "i_e_heli_light_03_dynamicloadout_f";
+		case "i_e_heli_light_03_unarmed_f" :
+		{
+			if (_side == west) then {
+				_vehicle setObjectTextureGlobal [0,"\lxRF\air_rf\Heli_Light_03\data\Heli_Light_03_base_olive_CO.paa"];
+			};
+			if (_side == east) then {
+				[_vehicle,["Black",1]] call BIS_fnc_initVehicle;
+			};
+			_vehicle addMagazineTurret ["LaserBatteries",[0]];
+			_vehicle addWeaponTurret ["LaserDesignator_Mounted",[0]];
+		};
+		// Blackfoot
+		case "b_d_heli_attack_01_dynamicloadout_lxws";
+		case "b_heli_attack_01_dynamicloadout_f" :
+		{
+		
 		};
 		default {
 			systemChat format ["WARNING: NJT FISTV init ran on an incompatible vehicle! It won't work properly! %1",typeOf _vehicle];

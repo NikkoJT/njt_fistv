@@ -18,7 +18,7 @@ Two types of support are available: high explosive, and smoke. There are a total
 <br/><br/>
 <font size='18'>INTERACTION</font>
 <br/>
-A player inside the FISTV can use the action menu to call for support. The observer turret can be accessed using a UAV terminal, which is provided in the vehicle inventory. (If the vehicle has a built-in recon mast with laser designator, this is used without a UAV terminal.)
+A player inside the FISTV can use the action menu to call for support. The observer turret can be accessed using a UAV terminal, which is provided in the vehicle inventory. (If the vehicle has a built-in recon mast or camera with laser designator, this is used without a UAV terminal.)
 <br/><br/>
 The fire direction centre will communicate with the observer using long-range radio channel %3.
 ",njt_param_fistv_supportCount,njt_param_fistv_supportCooldown,njt_var_supportChannel]]];

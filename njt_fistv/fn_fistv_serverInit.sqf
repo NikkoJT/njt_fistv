@@ -10,7 +10,8 @@ njt_supportCentre disableAI "ALL";
 njt_supportCentre allowDamage false;
 njt_supportCentre hideObjectGlobal true;
 
-[njt_supportCentre,["- FDC","-","FDC"]] remoteExec ["setName",0,true];
 njt_var_supportChannel radioChannelAdd [njt_supportCentre];
-njt_supportCentreGroup setGroupIDGlobal [selectRandom ["DEALER", "SKYLANCE", "COMET", "SANDBOX", "PALACE", "JANUS", "SPOTLIGHT", "ARGO", "OVERLORD","PHAROAH"]];
+njt_supportCentreGroup setGroupIDGlobal [selectRandom ["DEALER", "SKYLANCE", "COMET", "SANDBOX", "PALACE", "JANUS", "SPOTLIGHT", "ARGO", "OVERLORD","PHAROAH","PROMETHEUS","FESTIVAL","SHOGUN"]];
 publicVariable "njt_supportCentre";
+sleep 0.5;
+[njt_supportCentre,["- FDC","-","FDC"]] remoteExec ["setName",0,true];
