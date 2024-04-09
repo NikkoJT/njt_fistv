@@ -1,8 +1,10 @@
 // FIRE SUPPORT TEAM VEHICLE
 // Vehicle setup
 /*
- Supported vehicles: Marshall [M/P], Marid [M/P], Gorgon
-Gorgons with the passed side as WEST will be automatically textured as NATO Gorgons
+ Supported vehicles: Marshall [M/P], Marid [M/P], Gorgon, Strider (unarmed only), AH-9, MH-9, AH-99, WY-55, AH-11F
+Gorgons and Striders with the passed side as WEST will be automatically textured as NATO Gorgons or Striders.
+Hellcats with the passed side as EAST will be automatically textured in black.
+WY-55s with the passed side as WEST will be automatically textured in NATO olive.
 
 In object init field (AFTER assignGear call):
 [this, west] call njt_fnc_fistv_init;
