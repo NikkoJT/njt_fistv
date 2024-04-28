@@ -3,6 +3,8 @@
 
 if (!hasInterface) exitWith {}; // Exit if not a player.
 if (missionNamespace getVariable ["njt_var_fistv_briefingDone",false]) exitWith {};
+waitUntil {!isNil "f_script_loadoutNotes"};
+waitUntil {scriptDone f_script_loadoutNotes};
 
 _fistv = player createDiaryRecord ["diary", ["Fire Support Team Vehicle",format ["
 <br/>
