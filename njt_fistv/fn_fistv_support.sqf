@@ -4,7 +4,12 @@
 params ["_target","_isSmoke"];
 
 private _turret = _target getVariable ["njt_var_fistv_turret",objNull];
-private _laserTarget = laserTarget _turret;
+private _laserTurretIndex = (allTurrets _turret) findIf {
+	private _weaponsTurret = _turret weaponsTurret _x;
+	["Laserdesignator_vehicle","Laserdesignator_mounted"] in _weaponsTurret;
+};
+private _laserTurret = (allTurrets _turret) select _laserTurretIndex;
+private _laserTarget = _turret laserTarget _laserTurret;
 private _lastSupport = missionNamespace getVariable ["njt_var_fistv_lastSupport",0];
 private _timeNow = [serverTime,time] select isMultiplayer;
 private _timeDiff = _timeNow - _lastSupport;
@@ -55,7 +60,7 @@ sleep 20;
 ["radiobleep"] remoteExec ["playSound",(radioChannelInfo njt_var_supportChannel) select 3];
 [njt_supportcentre, [njt_var_supportChannel,"Splash, out."]] remoteExec ["customChat"];
 
-_laserTarget = laserTarget _turret;
+_laserTarget = laserTarget _turret laserTarget _laserTurret;
 if (!(isNull _laserTarget) && ((_laserTarget distance2D _startPosition) < 100)) then {
 	_startPosition = getPosATL _laserTarget;
 };
