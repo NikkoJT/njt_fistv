@@ -440,9 +440,9 @@ if isServer then {
 	if (_turret != _vehicle) then {
 		[_turret,false] remoteExec ["allowDamage",0,true];
 		_turret enableWeaponDisassembly false;
-		private _terminal = ["O_UavTerminal","B_UavTerminal","I_UavTerminal","C_UavTerminal"] select (_side call BIS_fnc_sideID);
-		_vehicle addItemCargoGlobal [_terminal,1];
 	};
+	private _terminal = ["O_UavTerminal","B_UavTerminal","I_UavTerminal","C_UavTerminal"] select (_side call BIS_fnc_sideID);
+	_vehicle addItemCargoGlobal [_terminal,1];
 	_vehicle setVariable ["njt_var_fistv_turret",_turret,true];
 
 };
